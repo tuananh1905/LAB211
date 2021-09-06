@@ -9,5 +9,7 @@
  * @author TuanAnh
  */
 public class P0001 {
-    
+    public static void main(String[] args) {
+        System.out.println("hello");
+    }
 }
