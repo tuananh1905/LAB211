@@ -71,6 +71,7 @@ public class Manager {
         System.out.println(" 1. "+type[0]+".");
         System.out.println(" 2. "+type[1]+".");
         System.out.println(" 3. "+type[2]+".");
+        System.out.print("Your choice: ");
         int choice = Validate.checkInputIntLimit(1, 3);
         System.out.print("Enter "+type[choice-1]+" of doctor you need to find: ");
         dt.searchDoctor(type[choice-1], Validate.checkInputString());
