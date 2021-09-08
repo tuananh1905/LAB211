@@ -1,29 +1,35 @@
 //https://docs.google.com/document/d/1JpwKwLJATKaMds3KVXzNDXE-qMGt618k/edit
 package P0055;
 
-import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Doctor> ld = new ArrayList<>();
-        
+        Manager menu = new Manager();
         while (true){
-            int choice = Manager.menu();
+            System.out.println("---Doctor management program---");
+            System.out.println(" 1. Add doctor.");
+            System.out.println(" 2. Update doctor.");
+            System.out.println(" 3. Delete doctor.");
+            System.out.println(" 4. Search doctor.");
+            System.out.println(" 5. Show doctor list.");
+            System.out.println(" 6. Exit.");
+            System.out.print("Enter your choice: ");
+            int choice = Validate.checkInputIntLimit(1, 5);
             switch (choice){
                 case 1:
-                    Manager.addDoctor(ld);
+                    menu.addDoctor();
                     break;
                 case 2:
-                    Manager.updateDoctor(ld);
+                    menu.updateDoctor();
                     break;
                 case 3:
-                    Manager.deleteDoctor(ld);
+                    menu.deleteDoctor();
                     break;
                 case 4:
-                    Manager.searchDoctor(ld);
+                    menu.searchDoctor();
                     break;
                 case 5:
-                    Manager.showDoctorList(ld);
+                    menu.showDoctorList();
                     break;
                 case 6:
                     return;

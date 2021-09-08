@@ -1,6 +1,5 @@
 package P0055;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Validate {
@@ -34,41 +33,35 @@ public class Validate {
                 int result = Integer.parseInt(scan.nextLine().trim());
                 return result;
             } catch (NumberFormatException e){
-                System.out.println("Enter again");
+                System.out.print("Enter again: ");
             }
         }
     }
     
-    public static boolean checkCodeExist(ArrayList<Doctor> ld, String code){
-        for (int i = 0; i < ld.size(); i++) {
-            if(code.equalsIgnoreCase(ld.get(i).getCode())){
-                return false;
+    public static String checkInputStringEmpty(String s){
+        String result = scan.nextLine().trim();
+        if(result.isEmpty()){
+            System.err.println("Your input is empty, this information not change!");
+            return s;
+        }
+        return result;
+    }
+    
+    public static int checkInputIntEmpty(int i){
+        while(true){
+            try{
+                String result = scan.nextLine().trim();
+                if(!result.isEmpty()){
+                    System.err.println("Your input is empty, this information not change!");
+                    return Integer.parseInt(result);
+                }else{
+                    return i;
+                }
+            } catch (NumberFormatException e){
+                System.out.print("Enter again: ");
             }
         }
-        return true;
     }
-    public static boolean checkNameExist(ArrayList<Doctor> ld, String name){
-        for (int i = 0; i < ld.size(); i++) {
-            if(name.equalsIgnoreCase(ld.get(i).getName())){
-                return false;
-            }
-        }
-        return true;
-    }
-    public static boolean checkSpecializationExist(ArrayList<Doctor> ld, String specialization){
-        for (int i = 0; i < ld.size(); i++) {
-            if(specialization.equalsIgnoreCase(ld.get(i).getSpecialization())){
-                return false;
-            }
-        }
-        return true;
-    }
-    public static boolean checkAvailabilityExist(ArrayList<Doctor> ld, int availability){
-        for (int i = 0; i < ld.size(); i++) {
-            if(ld.get(i).getAvailability() == availability){
-                return false;
-            }
-        }
-        return true;
-    }
+    
+    
 }
