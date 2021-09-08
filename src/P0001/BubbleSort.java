@@ -33,11 +33,13 @@ public class BubbleSort {
         do {
             while (!scan.hasNextInt()) {
                 String input = scan.next();
-                System.out.println("\""+input+"\" is not number, you need to enter a decimal number!!!");
+                System.err.println("\""+input+"\" is not number, you need to enter a decimal number!!!");
+                System.out.print("Enter again: ");
             }
             range = scan.nextInt();
             if (range < 0) {
-                System.out.println("\""+range+"\" is negative number, you need to enter a positive decimal number!!!");
+                System.err.println("\""+range+"\" is negative number, you need to enter a positive decimal number!!!");
+                System.out.print("Enter again: ");
             }
         } while (range < 0);
         return range;
