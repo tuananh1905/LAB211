@@ -53,7 +53,12 @@ public class Manager {
         String newCode = Validate.checkInputString();
         while(!Validate.checkCodeExist(ld, newCode)){
             if(code.equalsIgnoreCase(newCode)){
-                System.out.println("Code not change.");
+                System.out.println("Does the code not change?");
+                System.out.println(" 1. Yes.");
+                System.out.println(" 2. No.");
+                System.out.print("Y/N: ");
+                int choice = Validate.checkInputIntLimit(1, 2);
+                if(choice==1) break;
             } else {
                 System.out.println("This code is duplicate!!!");
             }
@@ -161,7 +166,7 @@ public class Manager {
         }
         return null;
     }
-    public static boolean getDoctorByName(ArrayList<Doctor> ld, String name){
+    public static boolean checkDoctorByName(ArrayList<Doctor> ld, String name){
         for (int i = 0; i < ld.size(); i++) {
             if(ld.get(i).getName().equalsIgnoreCase(name)){
                 return true;
@@ -169,7 +174,7 @@ public class Manager {
         }
         return false;
     }
-    public static boolean getDoctorBySpecialization(ArrayList<Doctor> ld, String Specialization){
+    public static boolean checkDoctorBySpecialization(ArrayList<Doctor> ld, String Specialization){
         for (int i = 0; i < ld.size(); i++) {
             if(ld.get(i).getSpecialization().equalsIgnoreCase(Specialization)){
                 return true;
@@ -177,7 +182,7 @@ public class Manager {
         }
         return false;
     }
-    public static boolean getDoctorByAvailability(ArrayList<Doctor> ld, int Availability){
+    public static boolean checkDoctorByAvailability(ArrayList<Doctor> ld, int Availability){
         for (int i = 0; i < ld.size(); i++) {
             if(ld.get(i).getAvailability()==Availability){
                 return true;
