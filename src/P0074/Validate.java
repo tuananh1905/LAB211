@@ -25,7 +25,7 @@ public class Validate {
                 int result = Integer.parseInt(scan.nextLine().trim());
                 return result;
             }catch(NumberFormatException e){
-                System.err.println("Value of matrix is digit!");
+                System.out.println("Values of matrix must be the number!!!");
                 System.out.print("Enter again: ");
             }
         }

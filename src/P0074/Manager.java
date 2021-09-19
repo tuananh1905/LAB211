@@ -1,19 +1,34 @@
 package P0074;
 
 public class Manager {
+    Calculate c = new Executive();
     
-    public static int menu() {
-        System.out.println("=== Welcome to calculator program ===");
-        System.out.println(" 1. Addiion maxtrixes.");
-        System.out.println(" 2. Subtraction matrixes.");
-        System.out.println(" 3. Multiplication matrixes.");
-        System.out.println(" 4. Exit.");
-        System.out.print(" Enter your choice: ");
-        int choice = Validate.checkInputLimit(1, 4);
-        return choice;
+    public void menu() {
+        while(true){
+            System.out.println("=== Welcome to calculator program ===");
+            System.out.println(" 1. Addiion maxtrixes.");
+            System.out.println(" 2. Subtraction matrixes.");
+            System.out.println(" 3. Multiplication matrixes.");
+            System.out.println(" 4. Exit.");
+            System.out.print(" Enter your choice: ");
+            int choice = Validate.checkInputLimit(1, 4);
+            switch(choice){
+                case 1:
+                    additionMatrix();
+                    break;
+                case 2:
+                    subtractionMatrix();
+                    break;
+                case 3: 
+                    multiplicationMatrix();
+                    break;
+                case 4:
+                    return;
+            }
+        }
     }
     
-    public static int[][] inputMatrix(int n){
+    public int[][] inputMatrix(int n){
         System.out.print("Enter row matrix "+n+": ");
         int row = Validate.checkInputInt();
         System.out.print("Enter column matrix "+n+": ");
@@ -39,88 +54,51 @@ public class Manager {
         }
     }
     
-    public static void additionMatrix(){
+    public void additionMatrix(){
         System.out.println("-------- Addition --------");
-        while(true){
-            int[][] matrix1 = inputMatrix(1);
-            int[][] matrix2 = inputMatrix(2);
-            if(Validate.checkMatrixSameSize(matrix1, matrix2)){
-                System.out.println("-------- Result --------");
-                displayMatrix(matrix1);
-                System.out.println("+");
-                displayMatrix(matrix2);
-                System.out.println("=");
-                int row = matrix1.length;
-                int column = matrix1[0].length;
-                for (int i = 0; i < row; i++) {
-                    for (int j = 0; j < column; j++) {
-                        int temp = matrix1[i][j] + matrix2[i][j];
-                        System.out.print("[" + temp + "]");
-                    }
-                    System.out.println("");
-                }
-                return;
-            }else {
-                System.err.println("2 matrix need to be the same size.");
-                System.out.println("Enter again. ");
-            }
+        int[][] matrix1 = inputMatrix(1);
+        int[][] matrix2 = inputMatrix(2);
+        if(!Validate.checkMatrixSameSize(matrix1, matrix2)){
+            System.err.println("\n2 matrix need to be the same size!!!\n");
+        }else {
+            System.out.println("-------- Result --------");
+            displayMatrix(matrix1);
+            System.out.println("+");
+            displayMatrix(matrix2);
+            System.out.println("=");
+            displayMatrix(c.additionMatrix(matrix1, matrix2));
         }
     }
     
-    public static void subtractionMatrix(){
+    public void subtractionMatrix(){
         System.out.println("-------- Subtraction --------");
-        while(true){
-            int[][] matrix1 = inputMatrix(1);
-            int[][] matrix2 = inputMatrix(2);
-            if(Validate.checkMatrixSameSize(matrix1, matrix2)){
-                System.out.println("-------- Result --------");
-                displayMatrix(matrix1);
-                System.out.println("-");
-                displayMatrix(matrix2);
-                System.out.println("=");
-                int row = matrix1.length;
-                int column = matrix1[0].length;
-                for (int i = 0; i < row; i++) {
-                    for (int j = 0; j < column; j++) {
-                        int temp = matrix1[i][j] - matrix2[i][j];
-                        System.out.print("[" + temp + "]");
-                    }
-                    System.out.println("");
-                }
-                return;
-            }else {
-                System.err.println("2 matrix need to be the same size.");
-                System.out.println("Enter again. ");
-            }
+        int[][] matrix1 = inputMatrix(1);
+        int[][] matrix2 = inputMatrix(2);
+        if(!Validate.checkMatrixSameSize(matrix1, matrix2)){
+            System.out.println("\n2 matrix need to be the same size!!!\n");
+        }else {
+            System.out.println("-------- Result --------");
+            displayMatrix(matrix1);
+            System.out.println("-");
+            displayMatrix(matrix2);
+            System.out.println("=");
+            displayMatrix(c.subtractionMatrix(matrix1, matrix2));
         }
     }
     
-    public static void multiplicationMatrix(){
+    public void multiplicationMatrix(){
         System.out.println("-------- Multiplication --------");
-        while(true){
-            int[][] matrix1 = inputMatrix(1);
-            int[][] matrix2 = inputMatrix(2);
-            if(Validate.checkMatrixCanMultiplication(matrix1, matrix2)){
-                System.out.println("-------- Result --------");
-                displayMatrix(matrix1);
-                System.out.println("*");
-                displayMatrix(matrix2);
-                System.out.println("=");
-                
-                int[][] matrixResult = new int[matrix1.length][matrix2[0].length];
-                for (int i = 0; i < matrix1.length; i++) {
-                    for (int j = 0; j < matrix2[0].length; j++) {
-                        for (int k = 0; k < matrix1[0].length; k++) {
-                            matrixResult[i][j] += matrix1[i][k] * matrix2[k][j];
-                        }
-                    }
-                }
-                displayMatrix(matrixResult);
-                return;
-            }else{
-                System.err.println("Matrix 1 column and 2 row amount need to be the same.");
-                System.out.println("Enter again.");
-            }
+        int[][] matrix1 = inputMatrix(1);
+        int[][] matrix2 = inputMatrix(2);
+        if(Validate.checkMatrixCanMultiplication(matrix1, matrix2)){
+            System.out.println("\nThe number of rows of matrix 1 must be equal to the number of columns of matrix 2!!!\n");
+        }else{
+            System.out.println("-------- Result --------");
+            displayMatrix(matrix1);
+            System.out.println("*");
+            displayMatrix(matrix2);
+            System.out.println("=");
+            displayMatrix(c.multiplicationMatrix(matrix1, matrix2));
         }
     }
 }

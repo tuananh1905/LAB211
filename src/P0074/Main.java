@@ -3,21 +3,7 @@ package P0074;
 
 public class Main {
     public static void main(String[] args) {
-        while(true){
-            int choice = Manager.menu();
-            switch(choice){
-                case 1:
-                    Manager.additionMatrix();
-                    break;
-                case 2:
-                    Manager.subtractionMatrix();
-                    break;
-                case 3: 
-                    Manager.multiplicationMatrix();
-                    break;
-                case 4:
-                    return;
-            }
-        }
+        Manager m = new Manager();
+        m.menu();
     }
 }
