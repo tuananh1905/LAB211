@@ -3,6 +3,7 @@ package P0055;
 import java.util.ArrayList;
 
 public class ControlDoctor {
+    //trong controler ko dc có system out hay system in
     private ArrayList<Doctor> ld = new ArrayList<>();
     
     public void addDoctor(Doctor d){
@@ -51,7 +52,6 @@ public class ControlDoctor {
         System.out.printf("%-15s%-15s%-20s%-15s\n", "Doctor code", "Doctor Name", "Specialization", "Availability");
         for (int i = 0; i < ld.size(); i++) {
             printADoctor(ld.get(i));
-//            System.out.printf("%-15s%-15s%-20s%-15d\n", ld.get(i).getCode(), ld.get(i).getName(), ld.get(i).getSpecialization(), ld.get(i).getAvailability());
         }
     }
     
