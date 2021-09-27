@@ -31,11 +31,11 @@ public class Validate {
         }
     }
     
-    public static boolean checkMatrixSameSize(int[][] matrix1, int[][] matrix2){
-        return matrix1.length==matrix2.length &&  matrix1[0].length==matrix2[0].length;
-    }
-    
-    public static boolean checkMatrixCanMultiplication(int[][] matrix1, int[][] matrix2){
-        return matrix1[0].length == matrix2.length;
-    }
+//    public static boolean checkMatrixSameSize(int[][] matrix1, int[][] matrix2){
+//        return matrix1.length==matrix2.length &&  matrix1[0].length==matrix2[0].length;
+//    }
+//    
+//    public static boolean checkMatrixCanMultiplication(int[][] matrix1, int[][] matrix2){
+//        return matrix1[0].length == matrix2.length;
+//    }
 }

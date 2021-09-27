@@ -13,6 +13,9 @@ public class Executive implements Calculate {
 
     @Override
     public int[][] additionMatrix(int[][] matrix1, int[][] matrix2) {
+        if(matrix1.length != matrix2.length ||  matrix1[0].length != matrix2[0].length){
+            return null;
+        } 
         int row = matrix1.length;
         int column = matrix1[0].length;
         int[][] result = new int[row][column];
@@ -26,6 +29,9 @@ public class Executive implements Calculate {
 
     @Override
     public int[][] subtractionMatrix(int[][] matrix1, int[][] matrix2) {
+        if(matrix1.length != matrix2.length ||  matrix1[0].length != matrix2[0].length){
+            return null;
+        }
         int row = matrix1.length;
         int column = matrix1[0].length;
         int[][] result = new int[row][column];
@@ -39,6 +45,9 @@ public class Executive implements Calculate {
 
     @Override
     public int[][] multiplicationMatrix(int[][] matrix1, int[][] matrix2) {
+        if(matrix1[0].length != matrix2.length){
+            return null;
+        }
         int[][] result = new int[matrix1.length][matrix2[0].length];
         for (int i = 0; i < matrix1.length; i++) {
             for (int j = 0; j < matrix2[0].length; j++) {
