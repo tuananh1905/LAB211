@@ -20,6 +20,11 @@ public class ControllerTask {
         l.add(new Task(id, taskTypeId, name, date, planFrom, planTo, assignee, reviewer));
     }
     
+    public int lastId(){
+        if(isEmpty()) return 1;
+        else return l.get(l.size()-1).getId() + 1;
+    }
+    
     public ArrayList getList(){
         return l;
     }
@@ -62,8 +67,4 @@ public class ControllerTask {
         return false;
     }
     
-    public int lastId(){
-        if(isEmpty()) return 1;
-        else return l.get(l.size()-1).getId() + 1;
-    }
 }
