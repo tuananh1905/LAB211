@@ -85,17 +85,27 @@ public class Validation {
     
     public boolean checkDateValid(String date){
         String[] d = date.split("-");
-        if(Integer.parseInt(d[1])==1 || Integer.parseInt(d[1])==3 || Integer.parseInt(d[1])==5 || Integer.parseInt(d[1])==7 || Integer.parseInt(d[1])==8 || Integer.parseInt(d[1])==10 || Integer.parseInt(d[1])==12){
-            if(Integer.parseInt(d[0])<=31 && Integer.parseInt(d[0])>0) return true;
+        int day = Integer.parseInt(d[0]);
+        int month = Integer.parseInt(d[1]);
+        int year = Integer.parseInt(d[2]);
+        
+        if(month==1 || month==3 || month==5 || month==7 || month==8 || month==10 || month==12){
+            if(day<=31 && day>0) return true;
         }
-        if(Integer.parseInt(d[1])==4 || Integer.parseInt(d[1])==3 || Integer.parseInt(d[1])==6 || Integer.parseInt(d[1])==9 || Integer.parseInt(d[1])==11){
-            if(Integer.parseInt(d[0])<=30 && Integer.parseInt(d[0])>0) return true;
+        
+        if(month==4 || month==6 || month==9 || month==11){
+            if(day<=30 && day>0) return true;
         }
-        if(Integer.parseInt(d[1])==2){
-            if(Integer.parseInt(d[2])%4==0){
-                if(Integer.parseInt(d[0])<=29 && Integer.parseInt(d[0])>0) return true;
+        
+        if(month==2){
+            if(year%4==0){
+                if(year%100==0 && year%400!=0){
+                        if(day<=28 && day>0) return true;
+                }else{
+                    if(day<=29 && day>0) return true;
+                }
             }else {
-                if(Integer.parseInt(d[0])<=28 && Integer.parseInt(d[0])>0) return true;
+                if(day<=28 && day>0) return true;
             }
         }
         return false;
@@ -116,7 +126,11 @@ public class Validation {
         while(true){
             double result = checkInputDouble();
             if(result>=8.0 && result <17.5){
-                return result;
+                if(result%0.5==0) return result;
+                else {
+                    System.out.println("The project must be 8.0, 8.5, 9.0");
+                    System.out.print("Enter again: ");
+                }
             }else {
                 System.out.println("The project must be start between 8:30am and 17:30pm.");
                 System.out.print("Enter again: ");
@@ -128,7 +142,11 @@ public class Validation {
         while(true){
             double result = checkInputDouble();
             if(result>from && result <=17.5){
-                return result;
+                if(result%0.5==0) return result;
+                else {
+                    System.out.println("The project must be 8.0, 8.5, 9.0");
+                    System.out.print("Enter again: ");
+                }
             }else {
                 if(from<=12) System.out.println("The project must be finish between "+ from +"am and 17:30pm.");
                 else System.out.println("The project must be finish between "+ from +"pm and 17:30pm.");
