@@ -7,10 +7,6 @@ package P0071;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author TuanAnh
- */
 public class ControllerTask {
     
     ArrayList<Task> l = new ArrayList<>();

@@ -7,10 +7,7 @@ package P0071;
 
 import java.util.Scanner;
 import java.util.regex.Pattern;
-/**
- *
- * @author TuanAnh
- */
+
 public class Validation {
     
     public Scanner scan = new Scanner(System.in);
@@ -51,10 +48,10 @@ public class Validation {
                     result = "test";
                     break;
                 case 3:
-                    result = "manager";
+                    result = "design";
                     break;
                 case 4:
-                    result = "learn";
+                    result = "review";
             }
             return result;
         }

@@ -5,11 +5,6 @@
  */
 package P0071;
 
-
-/**
- *
- * @author TuanAnh
- */
 public class Task {
     int id;
     String taskTypeId;
