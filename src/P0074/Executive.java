@@ -38,7 +38,7 @@ public class Executive implements Calculate {
         }
         return result;
     }
-
+//column matrix 1 = row matrix 2
     @Override
     public int[][] multiplicationMatrix(int[][] matrix1, int[][] matrix2) {
         if(matrix1[0].length != matrix2.length){
