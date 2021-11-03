@@ -5,10 +5,6 @@
  */
 package P0074;
 
-/**
- *
- * @author TuanAnh
- */
 public class Executive implements Calculate {
 
     @Override
