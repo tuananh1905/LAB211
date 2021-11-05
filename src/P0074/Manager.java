@@ -95,7 +95,7 @@ public class Manager {
         int[][] matrix2 = inputMatrix(2);
         int[][] result = c.multiplicationMatrix(matrix1, matrix2);
         if(result == null){
-            System.out.println("\nThe number of rows of matrix 1 must be equal to the number of columns of matrix 2!!!\n");
+            System.out.println("\nThe number of column of matrix 1 must be equal to the number of rows of matrix 2!!!\n");
         }else{
             System.out.println("-------- Result --------");
             displayMatrix(matrix1);
