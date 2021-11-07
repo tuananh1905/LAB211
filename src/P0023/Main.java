@@ -5,10 +5,6 @@
  */
 package P0023;
 
-/**
- *
- * @author TuanAnh
- */
 public class Main {
     public static void main(String[] args) {
         Manager m = new Manager();

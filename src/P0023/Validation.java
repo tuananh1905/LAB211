@@ -7,10 +7,6 @@ package P0023;
 
 import java.util.Scanner;
 
-/**
- *
- * @author TuanAnh
- */
 public class Validation {
     public static Scanner scan = new Scanner(System.in);
     

@@ -5,10 +5,6 @@
  */
 package P0023;
 
-/**
- *
- * @author TuanAnh
- */
 public class Fruit {
     String id;
     String name;
