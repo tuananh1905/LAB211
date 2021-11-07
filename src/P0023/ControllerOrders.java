@@ -8,14 +8,10 @@ package P0023;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-/**
- *
- * @author TuanAnh
- */
 public class ControllerOrders {
-    Hashtable<String, ArrayList<Order>> o = new Hashtable<>();
+    Hashtable<String, ArrayList<Fruit>> o = new Hashtable<>();
     
-    public void shopping(ArrayList<Order> orders , String name){
+    public void shopping(ArrayList<Fruit> orders , String name){
         o.put(name, orders);
     }
     

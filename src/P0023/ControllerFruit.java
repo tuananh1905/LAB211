@@ -7,12 +7,15 @@ package P0023;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author TuanAnh
- */
 public class ControllerFruit {
     ArrayList<Fruit> f = new ArrayList<>();
+
+    public ControllerFruit() {
+        addFruit(new Fruit("f001", "Apple", 5, 10, "Vietname"));
+        addFruit(new Fruit("f002", "Orange", 3, 10, "US"));
+        addFruit(new Fruit("f003", "Coconut", 2, 10, "Thailand"));
+        addFruit(new Fruit("f004", "Grape", 6, 10, "France"));
+    }
     
     public void addFruit(Fruit fr){
         f.add(fr);
@@ -22,19 +25,17 @@ public class ControllerFruit {
         return f;
     }
     
-    public ArrayList<Fruit> showFruitToOrder(){
-        ArrayList<Fruit> o = new ArrayList<>();
-        for (int i = 0; i < f.size(); i++) {
-            if(f.get(i).quantity!=0) o.add(f.get(i));
-        }
-        return o;
-    }
-    
     public boolean checkFruitIdExist(String id){
         for (int i = 0; i < f.size(); i++) {
             if(id.equalsIgnoreCase(f.get(i).getId())) return true;
         }
         return false;
+    }
+    
+    public void checkAfterShopping(){
+        for (int i = 0; i < f.size(); i++) {
+            if(f.get(i).quantity==0) f.remove(f.get(i));
+        }
     }
     
     public boolean checkFruitList(){

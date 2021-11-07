@@ -8,10 +8,6 @@ package P0023;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-/**
- *
- * @author TuanAnh
- */
 public class Manager {
     Validation validation = new Validation();
     ControllerFruit controllerFruit = new ControllerFruit();
@@ -75,10 +71,10 @@ public class Manager {
             System.out.println("There are no orders yet!!!");
             return;
         }
-        Hashtable<String, ArrayList<Order>> o = controllerOrders.show();
+        Hashtable<String, ArrayList<Fruit>> o = controllerOrders.show();
         for (String key : o.keySet()){
             System.out.println("Customer: "+key);
-            ArrayList<Order> a = o.get(key);
+            ArrayList<Fruit> a = o.get(key);
             System.out.printf("%-15s%-15s%-15s%-15s\n", "Fruit", "Quantity", "Price", "Amount");
             double total=0;
             for (int i = 0; i < a.size(); i++) {
@@ -105,8 +101,9 @@ public class Manager {
             int quantity = validation.checkInputIntLimit(1, fruit.getQuantity());
             fruit.setQuantity(fruit.getQuantity()-quantity);
             
-            if(c.checkItemExist(fruit.name)) c.updateOrder(fruit.name, quantity);
-            else c.addOrder(new Order(quantity, fruit.price, fruit.name));
+            if(c.checkItemExist(fruit.name)) c.updateOrder(fruit, quantity);
+            else c.addOrder(new Fruit(fruit.id, fruit.name, fruit.price, quantity, fruit.origin));
+            controllerFruit.checkAfterShopping();
             
             if(validation.checkInputYNOrder()){
                 break;
@@ -128,8 +125,7 @@ public class Manager {
         }
     }
     
-    public void showOrderList(ArrayList<Order> o){
-//        ArrayList<Order> o = controllerOrder.showOrderList();
+    public void showOrderList(ArrayList<Fruit> o){
         System.out.printf("%-15s%-15s%-15s%-15s\n","Fruit","Quantity","Price","Amount");
         for (int i = 0; i < o.size(); i++) {
             System.out.printf("%-15s%-15d%5.2f%-10s%.2f\n",o.get(i).getName(), o.get(i).getQuantity(), o.get(i).getPrice(), "$", o.get(i).getPrice()*o.get(i).getQuantity(), "$");
@@ -137,7 +133,7 @@ public class Manager {
     }
     
     public void showFruitListToOrder(){
-        ArrayList<Fruit> f = controllerFruit.showFruitToOrder();
+        ArrayList<Fruit> f = controllerFruit.showFruit();
         System.out.println("List of Fruit:");
         System.out.printf("%-15s%-15s%-15s%-15s%-15s\n","Item","Fruit Name","Origin","Quantity","Price");
         for (int i = 0; i < f.size(); i++) {
