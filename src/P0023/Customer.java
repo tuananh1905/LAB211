@@ -7,8 +7,9 @@ package P0023;
 
 import java.util.ArrayList;
 
-public class ControllerOrder {
-    ArrayList<Fruit> o = new ArrayList<>();
+public class Customer {
+    private String customerName;
+    private ArrayList<Fruit> o = new ArrayList<>();
     
     public void addOrder(Fruit buy){
         o.add(buy);
@@ -33,4 +34,13 @@ public class ControllerOrder {
     public ArrayList showOrderList(){
         return o;
     }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+    
 }

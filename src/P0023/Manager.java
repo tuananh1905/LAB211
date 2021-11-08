@@ -12,7 +12,7 @@ public class Manager {
     Validation validation = new Validation();
     ControllerFruit controllerFruit = new ControllerFruit();
     ControllerOrders controllerOrders = new ControllerOrders();
-    ControllerOrder controllerOrder = new ControllerOrder();
+//    ControllerOrder controllerOrder = new ControllerOrder();
     
     public void menu(){
         while(true){
@@ -90,7 +90,7 @@ public class Manager {
             System.out.println("The store has no fruit at the moment!!!");
             return;
         }
-        ControllerOrder c = new ControllerOrder();
+        Customer c = new Customer();
         while(true){
             showFruitListToOrder();
             System.out.print("Fruit your choice: ");
@@ -112,7 +112,9 @@ public class Manager {
         showOrderList(c.showOrderList());
         System.out.print("Enter customer name: ");
         String name = validation.checkInputString();
-        controllerOrders.shopping(c.showOrderList(), name);
+        c.setCustomerName(name);
+        
+        controllerOrders.shopping(c);
         System.out.println("Add successfull!!!");
     }
     

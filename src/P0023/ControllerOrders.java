@@ -11,8 +11,8 @@ import java.util.Hashtable;
 public class ControllerOrders {
     Hashtable<String, ArrayList<Fruit>> o = new Hashtable<>();
     
-    public void shopping(ArrayList<Fruit> orders , String name){
-        o.put(name, orders);
+    public void shopping(Customer c){
+        o.put(c.getCustomerName(), c.showOrderList());
     }
     
     public Hashtable show(){

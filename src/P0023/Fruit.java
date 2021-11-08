@@ -6,6 +6,7 @@
 package P0023;
 
 public class Fruit {
+
     private String id;
     private String name;
     private double price;
@@ -44,7 +45,9 @@ public class Fruit {
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        if (price > 0) {
+            this.price = price;
+        }
     }
 
     public int getQuantity() {
@@ -52,7 +55,9 @@ public class Fruit {
     }
 
     public void setQuantity(int quantity) {
-        this.quantity = quantity;
+        if (quantity > 0) {
+            this.quantity = quantity;
+        }
     }
 
     public String getOrigin() {
@@ -62,5 +67,5 @@ public class Fruit {
     public void setOrigin(String origin) {
         this.origin = origin;
     }
-    
+
 }
