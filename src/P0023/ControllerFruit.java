@@ -34,7 +34,7 @@ public class ControllerFruit {
     
     public void checkAfterShopping(){
         for (int i = 0; i < f.size(); i++) {
-            if(f.get(i).quantity==0) f.remove(f.get(i));
+            if(f.get(i).getQuantity()==0) f.remove(f.get(i));
         }
     }
     

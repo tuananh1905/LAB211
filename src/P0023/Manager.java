@@ -96,13 +96,13 @@ public class Manager {
             System.out.print("Fruit your choice: ");
             int item =  validation.checkInputIntLimit(1, controllerFruit.countNumberFruit());
             Fruit fruit = controllerFruit.getFruitById(item);
-            System.out.println("You selected: " + fruit.name);
+            System.out.println("You selected: " + fruit.getName());
             System.out.print("Please input quantity: ");
             int quantity = validation.checkInputIntLimit(1, fruit.getQuantity());
             fruit.setQuantity(fruit.getQuantity()-quantity);
             
-            if(c.checkItemExist(fruit.name)) c.updateOrder(fruit, quantity);
-            else c.addOrder(new Fruit(fruit.id, fruit.name, fruit.price, quantity, fruit.origin));
+            if(c.checkItemExist(fruit.getName())) c.updateOrder(fruit, quantity);
+            else c.addOrder(new Fruit(fruit.getId(), fruit.getName(), fruit.getPrice(), quantity, fruit.getOrigin()));
             controllerFruit.checkAfterShopping();
             
             if(validation.checkInputYNOrder()){

@@ -6,11 +6,11 @@
 package P0023;
 
 public class Fruit {
-    String id;
-    String name;
-    double price;
-    int quantity;
-    String origin;
+    private String id;
+    private String name;
+    private double price;
+    private int quantity;
+    private String origin;
 
     public Fruit() {
     }

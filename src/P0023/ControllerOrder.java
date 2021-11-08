@@ -16,7 +16,7 @@ public class ControllerOrder {
 
     public void updateOrder(Fruit fruit, int quantity){
         for (int i = 0; i < o.size(); i++) {
-            if(fruit.name.equalsIgnoreCase(o.get(i).getName())){
+            if(fruit.getName().equalsIgnoreCase(o.get(i).getName())){
                 o.get(i).setQuantity(o.get(i).getQuantity()+quantity);
                 return;
             }
