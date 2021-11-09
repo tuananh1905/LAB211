@@ -81,7 +81,7 @@ public class Manager {
                 System.out.printf("%-15s%-15d%5.2f%-10s%.2f\n",a.get(i).getName(), a.get(i).getQuantity(), a.get(i).getPrice(), "$", a.get(i).getPrice()*a.get(i).getQuantity(), "$");
                 total += a.get(i).getPrice() * a.get(i).getQuantity();
             }
-            System.out.println("Total: "+total);
+            System.out.println("Total: "+total+"$");
         }
     }
     
