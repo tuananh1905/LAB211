@@ -12,7 +12,6 @@ public class Manager {
     Validation validation = new Validation();
     ControllerFruit controllerFruit = new ControllerFruit();
     ControllerOrders controllerOrders = new ControllerOrders();
-//    ControllerOrder controllerOrder = new ControllerOrder();
     
     public void menu(){
         while(true){
@@ -25,7 +24,7 @@ public class Manager {
             int choice = validation.checkInputIntLimit(1, 4);
             switch(choice){
                 case 1:
-                    addFruit();
+                    createFruit();
                     break;
                 case 2:
                     viewOrders();
@@ -40,7 +39,7 @@ public class Manager {
         }
     }
     
-    public void addFruit(){
+    public void createFruit(){
         while(true){
             System.out.print("Enter fruit id: ");
             String id = validation.checkInputString();
@@ -57,6 +56,7 @@ public class Manager {
             int quantity = validation.checkInputInt();
             System.out.print("Enter origin: ");
             String origin = validation.checkInputString();
+            
             controllerFruit.addFruit(new Fruit(id, name, price, quantity, origin));
             
             if(!validation.checkInputYN()){
@@ -73,7 +73,7 @@ public class Manager {
         }
         Hashtable<String, ArrayList<Fruit>> o = controllerOrders.show();
         for (String key : o.keySet()){
-            System.out.println("Customer: "+key);
+            System.out.println("Customer: " + getNameCustomer(key));
             ArrayList<Fruit> a = o.get(key);
             System.out.printf("%-15s%-15s%-15s%-15s\n", "Fruit", "Quantity", "Price", "Amount");
             double total=0;
@@ -90,7 +90,7 @@ public class Manager {
             System.out.println("The store has no fruit at the moment!!!");
             return;
         }
-        Customer c = new Customer();
+        Order o = new Order();
         while(true){
             showFruitListToOrder();
             System.out.print("Fruit your choice: ");
@@ -101,20 +101,21 @@ public class Manager {
             int quantity = validation.checkInputIntLimit(1, fruit.getQuantity());
             fruit.setQuantity(fruit.getQuantity()-quantity);
             
-            if(c.checkItemExist(fruit.getName())) c.updateOrder(fruit, quantity);
-            else c.addOrder(new Fruit(fruit.getId(), fruit.getName(), fruit.getPrice(), quantity, fruit.getOrigin()));
+            if(o.checkItemExist(fruit.getName())) o.updateOrder(fruit, quantity);
+            else o.addFruitToOrder(new Fruit(fruit.getId(), fruit.getName(), fruit.getPrice(), quantity, fruit.getOrigin()));
+            
             controllerFruit.checkAfterShopping();
             
             if(validation.checkInputYNOrder()){
                 break;
             }
         }
-        showOrderList(c.showOrderList());
+        showOrderList(o.showOrderList());
         System.out.print("Enter customer name: ");
         String name = validation.checkInputString();
-        c.setCustomerName(name);
+        o.setCustomerName(name);
         
-        controllerOrders.shopping(c);
+        controllerOrders.addOrder(o);
         System.out.println("Add successfull!!!");
     }
     
@@ -141,5 +142,10 @@ public class Manager {
         for (int i = 0; i < f.size(); i++) {
             System.out.printf("%-15s%-15s%-15s%-15d%.2f\n", i+1, f.get(i).getName(), f.get(i).getOrigin(), f.get(i).getQuantity(), f.get(i).getPrice(), "$");
         }
+    }
+    
+    public String getNameCustomer(String key){
+        String[] s = key.split("[@]");
+        return s[1];
     }
 }

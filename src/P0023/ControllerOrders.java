@@ -5,21 +5,26 @@
  */
 package P0023;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class ControllerOrders {
-    Hashtable<String, ArrayList<Fruit>> o = new Hashtable<>();
+    Hashtable<String, ArrayList<Fruit>> os = new Hashtable<>();
     
-    public void shopping(Customer c){
-        o.put(c.getCustomerName(), c.showOrderList());
+    public void addOrder(Order o){
+        os.put(getKeyHashtable(o.getCustomerName()), o.showOrderList());
     }
     
     public Hashtable show(){
-        return o;
+        return os;
     }
     
     public boolean isEmpty(){
-        return o.isEmpty();
+        return os.isEmpty();
+    }
+    
+    public String getKeyHashtable(String name){
+        return LocalDateTime.now().toString() + "@" + name;
     }
 }

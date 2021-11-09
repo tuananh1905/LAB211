@@ -7,14 +7,17 @@ package P0023;
 
 import java.util.ArrayList;
 
-public class Customer {
+public class Order {
     private String customerName;
     private ArrayList<Fruit> o = new ArrayList<>();
     
-    public void addOrder(Fruit buy){
+    public void addFruitToOrder(Fruit buy){
         o.add(buy);
     }
-
+    
+    //if checkItemExist --> use updateOrder for not duplicate fruit in order
+    //if not --> addFruitToOrder
+    
     public void updateOrder(Fruit fruit, int quantity){
         for (int i = 0; i < o.size(); i++) {
             if(fruit.getName().equalsIgnoreCase(o.get(i).getName())){
