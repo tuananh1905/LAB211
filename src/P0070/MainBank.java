@@ -5,19 +5,18 @@
  */
 package P0070;
 
+import java.util.Locale;
 import java.util.Scanner;
 
-/**
- *
- * @author TuanAnh
- */
 public class MainBank {
     public static void main(String[] args) {
         String account;
         String password;
-        String captchaIn;
+        String captchaInput;
         int choice;
         String captchaGenerate;
+        
+        EBank user = new EBank();
         
         System.out.println("-------Login program-------");
         System.out.println("1. Vietnamese.");
@@ -30,7 +29,7 @@ public class MainBank {
             return;
         }
         
-        EBank user = new EBank(choice == 1 ? "Vi" : "En");
+        user.setLocale(new Locale(choice == 1 ? "Vi" : "En"));
         
         while(true){
             System.out.print(user.bundle.getString("accountPrompt"));
@@ -62,8 +61,8 @@ public class MainBank {
         System.out.println("Captcha: "+captchaGenerate);
         
         System.out.print(user.bundle.getString("captchaPrompt"));
-        captchaIn = scan.next();
+        captchaInput = scan.next();
         
-        System.out.println(user.checkCaptcha(captchaIn, captchaGenerate));
+        System.out.println(user.checkCaptcha(captchaInput, captchaGenerate));
     }
 }

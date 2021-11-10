@@ -9,16 +9,17 @@ import java.util.Locale;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-/**
- *
- * @author TuanAnh
- */
 public class EBank {
     
     ResourceBundle bundle;
+
+    public EBank() {
+        bundle = ResourceBundle.getBundle("messages", new Locale("Vi"));
+    }
+    
 //choose language for program
-    public EBank(String Locate){
-        bundle = ResourceBundle.getBundle("messages", new Locale(Locate));
+    public void setLocale(Locale Locale){
+        bundle = ResourceBundle.getBundle("messages", Locale);
     }
 //check account number input by user must be right format
 //return message
@@ -51,13 +52,13 @@ public class EBank {
     }
 //check captcha (captcha generate and captcha input by user)
 //return message
-    String checkCaptcha(String captchaIn, String recaptcha){
+    String checkCaptcha(String captchaInput, String captchaGenerate){
         //check length captcha
-        if (captchaIn.length() != recaptcha.length()){
+        if (captchaInput.length() != captchaGenerate.length()){
             return bundle.getString("captchaWrong");
         }
         
-        if (!recaptcha.contains(captchaIn)){
+        if (! captchaInput.contains(captchaGenerate)){
             return bundle.getString("captchaWrong");
         }else{
             return bundle.getString("captchaRight");
