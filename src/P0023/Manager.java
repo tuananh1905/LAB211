@@ -101,7 +101,7 @@ public class Manager {
             int quantity = validation.checkInputIntLimit(1, fruit.getQuantity());
             fruit.setQuantity(fruit.getQuantity()-quantity);
             
-            if(o.checkItemExist(fruit.getName())) o.updateOrder(fruit, quantity);
+            if(o.checkItemExist(fruit.getId())) o.updateOrder(fruit, quantity);
             else o.addFruitToOrder(new Fruit(fruit.getId(), fruit.getName(), fruit.getPrice(), quantity, fruit.getOrigin()));
             
             controllerFruit.checkAfterShopping();

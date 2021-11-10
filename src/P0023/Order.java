@@ -20,16 +20,16 @@ public class Order {
     
     public void updateOrder(Fruit fruit, int quantity){
         for (int i = 0; i < o.size(); i++) {
-            if(fruit.getName().equalsIgnoreCase(o.get(i).getName())){
+            if(fruit.getId().equalsIgnoreCase(o.get(i).getId())){
                 o.get(i).setQuantity(o.get(i).getQuantity()+quantity);
                 return;
             }
         }
     }
     
-    public boolean checkItemExist(String name){
+    public boolean checkItemExist(String id){
         for (int i = 0; i < o.size(); i++) {
-            if(name.equalsIgnoreCase(o.get(i).getName())) return true;
+            if(id.equalsIgnoreCase(o.get(i).getId())) return true;
         }
         return false;
     }
